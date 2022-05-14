@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KnowledgeCheckApp.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using System.Windows;
 
 namespace KnowledgeCheckApp
@@ -13,5 +10,13 @@ namespace KnowledgeCheckApp
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddScoped<MainViewModel>()
+                .AddScoped<LoginViewModel>()
+                .BuildServiceProvider());
+        }
     }
 }

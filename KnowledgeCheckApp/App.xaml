@@ -1,9 +1,15 @@
 ﻿<Application x:Class="KnowledgeCheckApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:KnowledgeCheckApp.ViewModels"
              xmlns:local="clr-namespace:KnowledgeCheckApp"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator"/>
+            <Style TargetType="Page">
+                <Setter Property="Background" Value="AliceBlue"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
