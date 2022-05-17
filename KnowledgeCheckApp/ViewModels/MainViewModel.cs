@@ -1,4 +1,6 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using KnowledgeCheckApp.Models;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 namespace KnowledgeCheckApp.ViewModels;
 
@@ -6,13 +8,19 @@ public class MainViewModel : ObservableObject
 {
     public MainViewModel()
     {
-
+        CurrentViewModel = new HomeViewModel();
     }
 
-    string _testText = "Test";
-    public string TestText
+    public MainViewModel(HomeViewModel homeViewModel)
     {
-        get => _testText;
-        set => SetProperty(ref _testText, value);
+        CurrentViewModel = homeViewModel;
     }
+
+    private NavigationBaseViewModel _currentViewModel;
+    public NavigationBaseViewModel CurrentViewModel
+    {
+        get => _currentViewModel;
+        set => SetProperty(ref _currentViewModel, value);
+    }
+
 }

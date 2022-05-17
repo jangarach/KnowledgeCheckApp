@@ -1,4 +1,6 @@
-﻿using KnowledgeCheckApp.ViewModels;
+﻿using KnowledgeCheckApp.Models;
+using KnowledgeCheckApp.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using System.Windows;
@@ -14,8 +16,16 @@ namespace KnowledgeCheckApp
         {
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-                .AddScoped<MainViewModel>()
-                .AddScoped<LoginViewModel>()
+                .AddDbContext<AppDbContext>(option =>
+                {
+                    option.UseSqlite("Data Source = AppDatabase.db");
+                })
+                .AddSingleton<MainViewModel>()
+                .AddScoped<HomeViewModel>()
+                .AddTransient<UserDataViewModel>()
+                .AddTransient<UsersScoreViewModel>()
+                .AddTransient<TestingViewModel>()
+                .AddTransient<ResultViewModel>()
                 .BuildServiceProvider());
         }
     }

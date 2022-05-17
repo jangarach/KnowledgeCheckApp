@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="KnowledgeCheckApp.Views.HomeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600"
+             Height="400" Width="600">
+    <materialDesign:Card UniformCornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <TextBlock 
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                FontSize="24"
+                Text="Добро пожаловать!"/>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+                <Button Margin="10" Width="250" Height="50" Content="Общие результаты" Command="{Binding GoToResultsCommand}" Cursor="Hand"/>
+                <Button Margin="10" Width="250" Height="50" Content="Начать тест" Command="{Binding GoToTestCommand}"/>
+            </StackPanel>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

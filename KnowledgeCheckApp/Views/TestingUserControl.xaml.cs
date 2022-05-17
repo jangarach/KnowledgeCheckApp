@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace KnowledgeCheckApp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LoginPage.xaml
+    /// Логика взаимодействия для TestingUserControl.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class TestingUserControl : UserControl
     {
-        public LoginPage()
+        public TestingUserControl()
         {
             InitializeComponent();
         }

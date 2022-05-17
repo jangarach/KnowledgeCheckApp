@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="KnowledgeCheckApp.Views.ResultUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:KnowledgeCheckApp.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400"
+             Height="400" Width="400"
+             d:DataContext="{d:DesignInstance vm:ResultViewModel, IsDesignTimeCreatable=True}">
+    <materialDesign:Card UniformCornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <TextBlock Text="Результат:" FontWeight="Bold"/>
+                <TextBlock>
+                    <Run Text="Кол-во вопросов: "/>
+                    <Run Text="{Binding UserScore.QuestionsCount}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Правильных ответов: "/>
+                    <Run Text="{Binding UserScore.CountOfCorrectAnswers}"/>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+                <Button Margin="10,0" Width="150" Height="50" Content="Печать" Command="{Binding FirstCommand}"/>
+                <Button Margin="10,0" Width="150" Height="50" Content="Главная" Command="{Binding SecondCommand}"/>
+            </StackPanel>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

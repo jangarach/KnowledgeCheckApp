@@ -8,6 +8,10 @@ namespace KnowledgeCheckApp.ViewModels
     public class ViewModelLocator
     {
         public MainViewModel? MainViewModel => Ioc.Default.GetService<MainViewModel>();
-        public LoginViewModel? LoginViewModel => Ioc.Default.GetService<LoginViewModel>();
+
+        public ViewModelLocator()
+        {
+
+        }
     }
 }
