@@ -6,7 +6,7 @@
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         xmlns:local="clr-namespace:KnowledgeCheckApp.Views"
         mc:Ignorable="d"
-        Title="ResultReport" Height="800" Width="800"
+        Title="Печать" Height="800" Width="800"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>

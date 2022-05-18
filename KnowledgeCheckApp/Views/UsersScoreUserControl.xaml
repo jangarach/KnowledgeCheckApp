@@ -20,6 +20,7 @@
                 Grid.Column="0"
                 Orientation="Horizontal">
                 <Button Margin="10,0" Width="150" Height="50" Content="Назад" Command="{Binding FirstCommand}" Cursor="Hand"/>
+                <Button Margin="10,0" Width="150" Height="50" Content="Печать" Command="{Binding SecondCommand}" Cursor="Hand"/>
                 <Button Margin="10,0" Width="150" Height="50" Content="Очистить" Command="{Binding DeleteCommand}" Cursor="Hand"/>
             </StackPanel>
             
@@ -44,7 +45,7 @@
                         </GridViewColumn>
                         <GridViewColumn Width="100" DisplayMemberBinding="{Binding UsedTime, StringFormat=HH:mm:ss}">
                             <GridViewColumnHeader Padding="0">
-                                <TextBlock Text="Потрачено времени" TextWrapping="Wrap"/>
+                                <TextBlock Text="Затрачено времени" TextWrapping="Wrap"/>
                             </GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView>

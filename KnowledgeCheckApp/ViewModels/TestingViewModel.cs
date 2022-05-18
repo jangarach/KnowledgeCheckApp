@@ -11,12 +11,11 @@ namespace KnowledgeCheckApp.ViewModels
 {
     public class TestingViewModel : NavigationBaseViewModel
     {
-        private readonly TimeOnly TestTime = new TimeOnly(0, 3, 30);
+        private readonly TimeOnly TestTimeLimit = new TimeOnly(0, 3, 30);
         private DateTime StartTestTime;
 
         private int _currentIndex;
         private string _nextBtnContent = "Следующий";
-        private Stopwatch _testTimer;
 
         private TestQuestion _testQuestion;
         private List<TestQuestion> _allTestQuestions;
@@ -38,9 +37,6 @@ namespace KnowledgeCheckApp.ViewModels
         {
             _appDbContext = appDbContext;
 
-            _testTimer = new Stopwatch();
-            _testTimer.Start();
-
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -57,7 +53,7 @@ namespace KnowledgeCheckApp.ViewModels
         private void Timer_Tick(object? sender, EventArgs e)
         {
             TestTimeCounter = TimeOnly.FromTimeSpan(DateTime.Now - StartTestTime);
-            IsEndedTestTime = TestTimeCounter >= TestTime;
+            IsEndedTestTime = TestTimeCounter >= TestTimeLimit;
         }
 
         public string QuestionNumber => $"Вопрос {_currentIndex + 1} из {_allTestQuestions.Count}";
@@ -94,7 +90,6 @@ namespace KnowledgeCheckApp.ViewModels
         {
             if (IsLastQuestion)
             {
-                _testTimer.Stop();
                 var userScore = new UserScore()
                 {
                     UserId = User.Id,
@@ -109,6 +104,7 @@ namespace KnowledgeCheckApp.ViewModels
                 var resulViewModel = Ioc.Default.GetService<ResultViewModel>();
                 resulViewModel.UserScore = userScore;
                 resulViewModel.AllTestQuestions = _allTestQuestions;
+                resulViewModel.IsOutOfTimeLimit = TestTimeCounter >= TestTimeLimit;
 
                 GotToNext(resulViewModel);
             }

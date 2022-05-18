@@ -15,6 +15,8 @@ namespace KnowledgeCheckApp.ViewModels
 
         public UserScore UserScore { get; set; }
         public List<TestQuestion> AllTestQuestions { get; set; }
+
+        public bool IsOutOfTimeLimit { get; set; }
         private void OnPrint()
         {
             var _parent = new ResultReport(UserScore, AllTestQuestions);

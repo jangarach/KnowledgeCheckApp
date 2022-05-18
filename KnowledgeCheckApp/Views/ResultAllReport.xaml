@@ -1,0 +1,167 @@
+﻿<Window x:Class="KnowledgeCheckApp.Views.ResultAllReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KnowledgeCheckApp.Views"
+        mc:Ignorable="d" 
+        Title="Печать" Height="800" Width="800"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+
+    <DocumentViewer>
+        <FixedDocument x:Name="fixedDoc">
+            <PageContent>
+                <FixedPage>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <ListView x:Name="lstAllResult"
+                            Grid.Row="1"
+                            Grid.Column="1">
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style>
+                                            <Setter Property="TextElement.FontSize" Value="12"/>
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                    <GridViewColumn Width="100" Header="Имя">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding User.FirstName}" TextWrapping="Wrap" FontSize="12px"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100" Header="Фамилия">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding User.LastName}" TextWrapping="Wrap" FontSize="12px"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="120">
+                                        <GridViewColumnHeader Margin="0" Padding="0">
+                                            <TextBlock Text="Дата тестирования" TextWrapping="Wrap"/>
+                                        </GridViewColumnHeader>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding DateStamp, StringFormat=dd.MM.yyyy HH:mm}" TextWrapping="Wrap" FontSize="12px"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100">
+                                        <GridViewColumnHeader Margin="0" Padding="0">
+                                            <TextBlock Text="Кол-во вопросов" TextWrapping="Wrap"/>
+                                        </GridViewColumnHeader>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding QuestionsCount}" TextWrapping="Wrap" FontSize="12px"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100">
+                                        <GridViewColumnHeader Margin="0" Padding="0">
+                                            <TextBlock Text="Правильно отвечено" TextWrapping="Wrap"/>
+                                        </GridViewColumnHeader>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding CountOfCorrectAnswers}" TextWrapping="Wrap" FontSize="12px"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100">
+                                        <GridViewColumnHeader Margin="0" Padding="0">
+                                            <TextBlock Text="Затрачено времени" TextWrapping="Wrap"/>
+                                        </GridViewColumnHeader>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding UsedTime, StringFormat=HH:mm:ss}" TextWrapping="Wrap" FontSize="12px"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </FixedPage>
+            </PageContent>
+        </FixedDocument>
+    </DocumentViewer>
+    
+    <!--<Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ListView 
+                Grid.Row="1"
+                Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="TextElement.FontSize" Value="12"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Width="100" Header="Имя">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding User.FirstName}" TextWrapping="Wrap" FontSize="12px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" Header="Фамилия">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding User.LastName}" TextWrapping="Wrap" FontSize="12px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Дата тестирования">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DateStamp, StringFormat=dd.MM.yyyy HH:mm}" TextWrapping="Wrap" FontSize="12px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Кол-во вопросов">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding QuestionsCount}" TextWrapping="Wrap" FontSize="12px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" Header="Правильно отвечено">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CountOfCorrectAnswers}" TextWrapping="Wrap" FontSize="12px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" Header="Затрачено времени">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding UsedTime, StringFormat=HH:mm:ss}" TextWrapping="Wrap" FontSize="12px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>-->
+</Window>

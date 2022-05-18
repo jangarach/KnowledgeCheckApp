@@ -29,11 +29,23 @@
                     Margin="10,0"
                     VerticalAlignment="Center" >
                     <Run Text="Время "/>
-                    <Run Text="{Binding TestTimeCounter, StringFormat=mm:ss, Mode=OneWay}">
+                    <Run Text="{Binding TestTimeCounter, StringFormat=mm мин. ss сек., Mode=OneWay}">
                         <Run.Style>
                             <Style TargetType="Run">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsEndedTestTime}" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Run.Style>
+                    </Run>
+                    <Run>
+                        <Run.Style>
+                            <Style TargetType="Run">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEndedTestTime}" Value="True">
+                                        <Setter Property="Text" Value="(превышен лимит по времени)"/>
                                         <Setter Property="Foreground" Value="Red"/>
                                     </DataTrigger>
                                 </Style.Triggers>

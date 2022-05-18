@@ -1,13 +1,17 @@
 ﻿using KnowledgeCheckApp.Models;
+using KnowledgeCheckApp.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Documents;
 
 namespace KnowledgeCheckApp.ViewModels
 {
@@ -105,7 +109,26 @@ namespace KnowledgeCheckApp.ViewModels
 
         private void OnPrint()
         {
+            ResultAllReport report = new ResultAllReport();
+            report.lstAllResult.ItemsSource = UsersScore;
+            //report.fixedDoc.DocumentPaginator.PageSize = new Size(96 * 8.5, 96 * 11);
 
+            //var tee = new List<UserScore>();
+
+            //PrintDocument pd = new PrintDocument();
+            //DocumentPaginator paginator = new BookPaginator(doc.DocumentPaginator, doc.DocumentPaginator.PageSize);
+            //pd.Print(paginator, "Books");
+
+            //for (int i = 0; i< 10; i++)
+            //{
+            //    foreach (var t in UsersScore)
+            //    {
+            //        tee.Add(t);
+            //    }
+            //}
+            //report.lstAllResult.ItemsSource = tee;
+
+            report.ShowDialog();
         }
     }
 }
